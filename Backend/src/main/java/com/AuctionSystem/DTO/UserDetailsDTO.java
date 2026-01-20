@@ -1,12 +1,14 @@
 package com.AuctionSystem.DTO;
 
-import com.AuctionSystem.Model.Auction;
 import java.util.List;
+
+import com.AuctionSystem.Model.Auction;
 
 public class UserDetailsDTO {
     private Long userId;
     private String name;
     private String email;
+    private String role;
     private List<Auction> auctions;
 
     // Getters and Setters
@@ -32,6 +34,14 @@ public class UserDetailsDTO {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 
     public List<Auction> getAuctions() {

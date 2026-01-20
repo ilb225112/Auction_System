@@ -11,44 +11,36 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     setError('');
 
-    if (password === "admin12" && email === "admin123@gmail.com") {
-      localStorage.setItem('admin', JSON.stringify({password, email}));
-      navigate('/');
-      window.location.reload();
-      toast.success("Login Successful");
-    }
-    else {
-      toast.error("Invalid mail or password");
-    }
-  }
-    //   try {
-    //     const response = await fetch(`${USER_PATH}/login`, {
-    //       method: 'POST',
-    //       headers: {
-    //         'Content-Type': 'application/json',
-    //       },
-    //       body: JSON.stringify({ email, password }),
-    //     });
+    try {
+      const response = await fetch(`${USER_PATH}/login`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password }),
+      });
 
-    //     if (response.ok) {
-    //       const data = await response.json();
-    //       console.log('Login successful');
-    //       localStorage.setItem('user', JSON.stringify(data));
-    //       navigate('/');
-
-    //       window.location.reload();
-    //     } else {
-    //       const errorData = await response.json();
-    //       setError(errorData.message || 'Login failed, please try again.');
-    //     }
-    //   } catch (error) {
-    //     console.error('Error:', error);
-    //     setError('An error occurred. Please try again.');
-    //   }
-    // };
+      if (response.ok) {
+        const data = await response.json();
+        console.log('Login response:', data);
+        
+        // Store admin data and navigate
+        localStorage.setItem('admin', JSON.stringify(data));
+        toast.success('Login Successful');
+        navigate('/');
+        window.location.reload();
+      } else {
+        toast.error('Invalid email or password');
+        setError('Login failed, please try again.');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      toast.error('Connection error. Make sure backend is running.');
+      setError('An error occurred. Please try again.');
+    }
+  };
 
     return (
       <div className="flex justify-center items-center h-screen bg-gray-100">

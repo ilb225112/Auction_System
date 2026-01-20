@@ -1,13 +1,25 @@
 package com.AuctionSystem.Service;
 
-import com.AuctionSystem.Model.*;
-import com.AuctionSystem.Repository.*;
-import com.AuctionSystem.DTO.*;
+import java.util.Date;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.*;
-import java.util.stream.Collectors;
+import com.AuctionSystem.DTO.AllUsersDTO;
+import com.AuctionSystem.DTO.BidderAuctionDTO;
+import com.AuctionSystem.DTO.ItemDTO;
+import com.AuctionSystem.DTO.UserDetailsDTO;
+import com.AuctionSystem.Model.Auction;
+import com.AuctionSystem.Model.BidRegistration;
+import com.AuctionSystem.Model.Item;
+import com.AuctionSystem.Model.Users;
+import com.AuctionSystem.Repository.AuctionRepository;
+import com.AuctionSystem.Repository.BidRegistrationRepository;
+import com.AuctionSystem.Repository.ItemRepository;
+import com.AuctionSystem.Repository.UserRepository;
 
 @Service
 public class UserService {
@@ -59,6 +71,7 @@ public class UserService {
         response.setUserId(user.getUserId());
         response.setName(user.getName());
         response.setEmail(user.getEmail());
+        response.setRole(user.getRole());
 
         // Retrieve attended auctions via BidRegistration
         response.setAuctions(user.getRegistrations().stream()
