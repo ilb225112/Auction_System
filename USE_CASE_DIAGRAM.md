@@ -20,7 +20,7 @@ An administrator who manages the auction system, creates auctions, adds items, m
 ## Use Cases
 
 ### Common Use Cases (Both Bidder & Admin)
-1. **Register User** - New users can register to the system (users are registered with a role, typically as bidders, while admins may be created through other means)
+1. **Register User** - New users can register to the system (the registration endpoint creates users with the "BIDDER" role by default)
 2. **Login** - Both bidders and admins authenticate to access the system
 3. **Change Password** - Both bidders and admins can update their password
 4. **View Auctions** - Both bidders and admins can view different types of auctions
@@ -113,10 +113,9 @@ The main domain models in the system:
 The diagram uses color coding to improve readability:
 - **Yellow** (#fff2cc) - Common use cases (Register, Login, Change Password)
 - **Light Green** (#d5e8d4) - Bidder-specific use cases
-- **Light Red** (#f8cecc) - Admin-specific use cases
+- **Light Red** (#f8cecc) - Admin-specific use cases and Admin actor
 - **Light Purple** (#e1d5e7) - Included use cases (sub-functionalities)
 - **Light Blue** (#dae8fc) - System boundary and Bidder actor
-- **Light Red** (#f8cecc) - Admin actor
 
 ## Notes
 - The diagram follows UML use case diagram conventions
