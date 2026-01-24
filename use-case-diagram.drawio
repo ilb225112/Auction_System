@@ -117,7 +117,7 @@
         <mxCell id="assoc-bidder-login" value="" style="endArrow=none;html=1;exitX=1;exitY=0.3;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="actor-bidder" target="uc-login">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="400" y="600" as="sourcePoint" />
-            <mxPoint x="450" y="550" as="targetPath" />
+            <mxPoint x="450" y="550" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         

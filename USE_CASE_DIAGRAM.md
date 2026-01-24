@@ -12,18 +12,18 @@ This document describes the use case diagram for the Auction System. The diagram
 ## Actors
 
 ### 1. Bidder (User)
-A bidder is a regular user of the auction system who can participate in auctions by registering, viewing items, and placing bids.
+A bidder is a regular user of the auction system who can participate in auctions by registering, viewing items, and placing bids. Bidders can perform common operations like login, change password, and view auctions.
 
 ### 2. Admin
-An administrator who manages the auction system, creates auctions, adds items, manages bidders, and finalizes sales.
+An administrator who manages the auction system, creates auctions, adds items, manages bidders, and finalizes sales. Admins also perform common operations like login, change password, and view auctions.
 
 ## Use Cases
 
 ### Common Use Cases (Both Bidder & Admin)
-1. **Register User** - New users can register to the system as bidders
-2. **Login** - Users authenticate to access the system
-3. **Change Password** - Users can update their password
-4. **View Auctions** - Users can view different types of auctions
+1. **Register User** - New users can register to the system (users are registered with a role, typically as bidders, while admins may be created through other means)
+2. **Login** - Both bidders and admins authenticate to access the system
+3. **Change Password** - Both bidders and admins can update their password
+4. **View Auctions** - Both bidders and admins can view different types of auctions
 
 ### Bidder Use Cases
 5. **View Upcoming Auctions** - View auctions that haven't started yet (included in "View Auctions")
