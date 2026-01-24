@@ -1,0 +1,116 @@
+# Use Case Diagram Structure
+
+```
+                                 ┌────────────────────────────────────────────────────────────┐
+                                 │         Auction System (System Boundary)                  │
+                                 │                                                            │
+                                 │  ┌──────────────┐   ┌──────────────┐   ┌──────────────┐  │
+        ┌────────┐               │  │   Register   │   │    Login     │   │    Change    │  │
+        │        │──────────────────│     User     │   │              │   │   Password   │  │
+        │ Bidder │               │  └──────────────┘   └──────────────┘   └──────────────┘  │
+        │        │──┐            │                                                            │
+        └────────┘  │            │  ┌──────────────┐                                         │
+                    │            │  │     View     │──<<include>>──┐                         │
+                    │            │  │   Auctions   │               │                         │
+                    │            │  └──────────────┘               │                         │
+                    │            │         │                       ↓                          │
+                    │            │         │              ┌──────────────┐                    │
+                    │            │         │              │View Upcoming │                    │
+                    │            │         │              │   Auctions   │                    │
+                    │            │         │              └──────────────┘                    │
+                    │            │         │                                                  │
+                    │            │         │              ┌──────────────┐                    │
+                    │            │         │              │  View Live   │                    │
+                    │            │         │──<<include>>─│   Auctions   │                    │
+                    │            │         │              └──────────────┘                    │
+                    │            │         │                                                  │
+                    │            │         │              ┌──────────────┐                    │
+                    │            │         │              │View Completed│                    │
+                    │            │         └──<<include>>─│   Auctions   │                    │
+                    │            │                        └──────────────┘                    │
+                    │            │                                                            │
+                    │            │  ┌──────────────┐   ┌──────────────┐   ┌──────────────┐  │
+                    │            │  │  Register    │   │     View     │   │     View     │  │
+                    │            │  │    for       │   │  Registered  │   │   Auction    │  │
+                    │            │  │   Auction    │   │   Auctions   │   │    Items     │  │
+                    │            │  └──────────────┘   └──────────────┘   └──────────────┘  │
+                    │            │                                                            │
+                    │            │  ┌──────────────┐   ┌──────────────┐   ┌──────────────┐  │
+                    │            │  │    Place     │   │  View Latest │   │     View     │  │
+                    │            │  │     Bid      │   │     Bid      │   │  Purchased   │  │
+                    │            │  └──────────────┘   └──────────────┘   │    Items     │  │
+                    │            │                                         └──────────────┘  │
+                    │            │                                                            │
+                    │            │                                                            │
+                    │            │  ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─   │
+                    │            │                                                            │
+                    │            │  ┌──────────────┐                                         │
+        ┌────────┐  │            │  │    Manage    │──<<include>>──┐                         │
+        │        │  │            │  │   Auction    │               │                         │
+        │ Admin  │──┼───────────────└──────────────┘               │                         │
+        │        │  │            │         │                       ↓                          │
+        └────────┘  │            │         │              ┌──────────────┐                    │
+                    │            │         │              │    Create    │                    │
+                    │            │         │              │   Auction    │                    │
+                    │            │         │              └──────────────┘                    │
+                    │            │         │                                                  │
+                    │            │         │              ┌──────────────┐                    │
+                    │            │         └──<<include>>─│   Add Items  │                    │
+                    │            │                        │  to Auction  │                    │
+                    │            │                        └──────────────┘                    │
+                    │            │                                                            │
+                    │            │  ┌──────────────┐                                         │
+                    │            │  │    Manage    │──<<include>>──┐                         │
+                    │            │  │   Bidders    │               │                         │
+                    │            │  └──────────────┘               │                         │
+                    │            │         │                       ↓                          │
+                    │            │         │              ┌──────────────┐                    │
+                    │            │         │              │     View     │                    │
+                    │            │         │              │  Registered  │                    │
+                    │            │         │              │   Bidders    │                    │
+                    │            │         │              └──────────────┘                    │
+                    │            │         │                                                  │
+                    │            │         │              ┌──────────────┐                    │
+                    │            │         └──<<include>>─│    Remove    │                    │
+                    │            │                        │    Bidder    │                    │
+                    │            │                        │ from Auction │                    │
+                    │            │                        └──────────────┘                    │
+                    │            │                                                            │
+                    │            │  ┌──────────────┐   ┌──────────────┐                      │
+                    └───────────────│  Sell Item   │   │  View All    │                      │
+                                 │  └──────────────┘   │    Users     │                      │
+                                 │                      └──────────────┘                      │
+                                 │                                                            │
+                                 └────────────────────────────────────────────────────────────┘
+
+Legend:
+  ──────  Association (Actor to Use Case)
+  <<include>>  Include relationship
+  ┌──────┐  Use Case
+  └──────┘
+  ┌────┐
+  │    │  Actor
+  └────┘
+  ┌────────┐
+  │ System │  System Boundary
+  └────────┘
+```
+
+## Summary
+
+**Actors:** 2
+- Bidder (10 associations)
+- Admin (8 associations)
+
+**Use Cases:** 21
+- Common: 4 (Register User, Login, Change Password, View Auctions)
+- Bidder-specific: 9
+- Admin-specific: 8
+
+**Relationships:** 
+- Include relationships: 7
+  - View Auctions → View Upcoming/Live/Completed Auctions (3)
+  - Manage Auction → Create Auction, Add Items (2)
+  - Manage Bidders → View Bidders, Remove Bidder (2)
+
+**System Boundary:** 1 (Auction System)
