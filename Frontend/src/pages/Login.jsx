@@ -32,8 +32,13 @@ const Login = () => {
         navigate('/');
         window.location.reload();
       } else {
-        const errorData = await response.json();
-        setError(errorData.message || 'Invalid email or password');
+        // Backend returns null body on error, so handle gracefully
+        try {
+          const errorData = await response.json();
+          setError(errorData.message || 'Invalid email or password');
+        } catch {
+          setError('Invalid email or password');
+        }
         toast.error('Login failed');
       }
     } catch (error) {

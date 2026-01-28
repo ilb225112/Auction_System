@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import { USER_PATH } from "../constant";
 import { toast } from "react-toastify";
+import Navbar from "../components/Navbar";
 
 const Profile = () => {
   const { userId } = useParams();
@@ -72,7 +73,9 @@ const Profile = () => {
   const passwordStrength = getPasswordStrength();
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-purple-50 p-6">
+    <>
+      <Navbar />
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-purple-50 p-6">
       <div className="max-w-2xl mx-auto space-y-6">
         {/* Profile Information Card */}
         <div className="bg-white rounded-2xl shadow-2xl overflow-hidden">
@@ -280,6 +283,7 @@ const Profile = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

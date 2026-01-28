@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { USER_PATH } from "../constant";
+import Navbar from "../components/Navbar";
 
 const BidderAuctions = () => {
   const [auctions, setAuctions] = useState([]);
@@ -99,7 +100,9 @@ const BidderAuctions = () => {
   }
 
   return (
-    <div className="container mx-auto p-6">
+    <>
+      <Navbar />
+      <div className="container mx-auto p-6">
       <div className="mb-8">
         <h1 className="text-4xl font-bold mb-2 text-center bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
           My Registered Auctions
@@ -195,6 +198,7 @@ const BidderAuctions = () => {
         </div>
       )}
     </div>
+    </>
   );
 };
 

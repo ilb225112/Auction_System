@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams, Link } from "react-router-dom";
 import { USER_PATH } from "../constant";
+import Navbar from "../components/Navbar";
 
 const PurchasedItems = () => {
   const { userId, auctionName, auctionId } = useParams();
@@ -48,7 +49,9 @@ const PurchasedItems = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 to-blue-50 p-6">
+    <>
+      <Navbar />
+      <div className="min-h-screen bg-gradient-to-br from-green-50 to-blue-50 p-6">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="mb-8">
@@ -122,6 +125,7 @@ const PurchasedItems = () => {
         )}
       </div>
     </div>
+    </>
   );
 };
 

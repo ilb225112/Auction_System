@@ -95,4 +95,21 @@ public class BidService {
         return true;
     }
 
+    public List<BidDTO> getBidHistory(Long auctionId, Long itemId) {
+        List<Bid> bids = bidRepository.findBidsByItem_ItemIdAndItem_Auction_AuctionIdOrderByBidTimeDesc(itemId, auctionId);
+        List<BidDTO> bidDTOs = new ArrayList<>();
+        
+        for (Bid bid : bids) {
+            bidDTOs.add(new BidDTO(
+                bid.getItem().getItemId(),
+                bid.getBidder().getUserId(),
+                bid.getBidder().getName(),
+                bid.getBidAmount(),
+                bid.getBidTime()
+            ));
+        }
+        
+        return bidDTOs;
+    }
+
 }

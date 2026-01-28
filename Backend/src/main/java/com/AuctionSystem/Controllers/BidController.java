@@ -48,4 +48,10 @@ public class BidController {
         return success ? ResponseEntity.ok("Bid placed successfully")
                 : ResponseEntity.badRequest().body("Bid placement failed");
     }
+
+    @GetMapping("/bidHistory/{auctionId}/{itemId}")
+    public ResponseEntity<List<BidDTO>> getBidHistory(@PathVariable Long auctionId, @PathVariable Long itemId) {
+        List<BidDTO> bidHistory = bidService.getBidHistory(auctionId, itemId);
+        return ResponseEntity.ok(bidHistory);
+    }
 }

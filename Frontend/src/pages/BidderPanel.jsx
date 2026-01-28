@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { BID_PATH, AUCTION_PATH } from "../constant";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { toast } from "react-toastify";
+import Navbar from "../components/Navbar";
 
 const BidderPanel = () => {
     const { auctionId, name, userId } = useParams();
@@ -165,7 +166,9 @@ const BidderPanel = () => {
 
     if (allSold) {
         return (
-            <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 p-6">
+            <>
+                <Navbar />
+                <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 p-6">
                 <div className="bg-white rounded-2xl shadow-2xl p-12 text-center max-w-md">
                     <div className="mb-6">
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-24 w-24 mx-auto text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -176,6 +179,7 @@ const BidderPanel = () => {
                     <p className="text-gray-600">All items have been sold.</p>
                 </div>
             </div>
+            </>
         );
     }
     
@@ -190,7 +194,9 @@ const BidderPanel = () => {
     const currentItem = items[currentItemIndex];
 
     return (
-        <div className="flex flex-col lg:flex-row items-start justify-center min-h-screen bg-gradient-to-br from-blue-50 to-purple-50 p-6 gap-6">
+        <>
+            <Navbar />
+            <div className="flex flex-col lg:flex-row items-start justify-center min-h-screen bg-gradient-to-br from-blue-50 to-purple-50 p-6 gap-6">
             {/* Main Auction Panel */}
             <div className="w-full lg:w-2/3 max-w-2xl">
                 <div className="bg-white shadow-2xl rounded-2xl overflow-hidden">
@@ -314,6 +320,7 @@ const BidderPanel = () => {
                 </div>
             </div>
         </div>
+        </>
     );
 };
 
